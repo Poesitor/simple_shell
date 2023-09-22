@@ -14,6 +14,7 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream);
 char *_strtok(char *str, const char *delim);
 char *_strdup(char *str);
 int _strcmp(char *s1, char *s2);
+char *_cmdcat(char *dest, char *src);
 
 #endif /* SHELL_H */
 

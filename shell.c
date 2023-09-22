@@ -9,7 +9,7 @@
  *
  * Return: void
  */
-void start_process(char *command, char **environ, char *prog_name)
+void start_process(char *path, char *args[], char **environ, char *prog_name)
 {
 	int status;
 	pid_t child_pid = fork();
@@ -21,9 +21,7 @@ void start_process(char *command, char **environ, char *prog_name)
 	}
 	else if (child_pid == 0)
 	{
-		char *child_argv[] = {NULL};
-
-		if (execve(command, child_argv, environ) == -1)
+		if (execve(path, args, environ) == -1)
 		{
 			perror(prog_name);
 			_exit(1);
@@ -46,8 +44,9 @@ void start_process(char *command, char **environ, char *prog_name)
  */
 int main(__attribute__((unused)) int ac, char **argv, char **environ)
 {
-	char *buffer, *command, *copy;
-	int chars_read;
+	char *buffer, *copy, *token, *path;
+	char *cmdargs[4];
+	int chars_read, i;
 	size_t n = 0;
 	int interactive = isatty(STDIN_FILENO);
 
@@ -68,12 +67,21 @@ int main(__attribute__((unused)) int ac, char **argv, char **environ)
 			if (buffer[chars_read - 1] == '\n')
 				buffer[chars_read - 1] = '\0';
 
+			i = 0;
 			copy = _strdup(buffer);
 			free(buffer);
-			command = _strtok(copy, " ");
-			if (_strcmp(command, "") != 0)
+			path = _strtok(copy, " ");
+			cmdargs[i++] = path;
+			while ((token = _strtok(NULL, " ")) != NULL)
 			{
-				start_process(command, environ, argv[0]);
+				if (_strcmp(token, "") == 0)
+					continue;
+				cmdargs[i++] = token;
+			}
+			cmdargs[i] = token;
+			if (_strcmp(path, "") != 0)
+			{
+				start_process(path, cmdargs, environ, argv[0]);
 				free(copy);
 			}
 			buffer = NULL;
