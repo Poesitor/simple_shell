@@ -1,9 +1,52 @@
-#include <stdlib.h>
-#include <string.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <sys/wait.h>
-#include <unistd.h>
+#include "main.h"
+
+/**
+ * no_path - prints error message and exits the executing process
+ *
+ * @name: program name
+ * @num: the line number the command was found
+ * @command: The command intended to be run
+ *
+ * Return: void
+ */
+void no_path(char *name, int num, char *command)
+{
+	int count = 0;
+	int temp = num;
+	char *num_str;
+	char *err_msg = "not found\n";
+
+	while (temp != 0)
+	{
+		temp /= 10;
+		count++;
+	}
+
+	num_str = malloc(sizeof(char) * (count + 1));
+	if (num_str == NULL)
+	{
+		perror("malloc fail");
+		_exit(EXIT_FAILURE);
+	}
+	num_str[count] = '\0';
+	while (count > 0)
+	{
+		count--;
+		num_str[count] = num % 10 + '0';
+		num /= 10;
+	}
+
+	write(STDERR_FILENO, name, strlen(name));
+	write(STDERR_FILENO, ": ", 2);
+	write(STDERR_FILENO, num_str, strlen(num_str));
+	write(STDERR_FILENO, ": ", 2);
+	write(STDERR_FILENO, command, strlen(command));
+	write(STDERR_FILENO, ": ", 2);
+	write(STDERR_FILENO, err_msg, strlen(err_msg));
+
+	free(num_str);
+	_exit(EXIT_SUCCESS);
+}
 
 /**
  * count_words - count the number of words in a string
@@ -23,7 +66,10 @@ int count_words(char *lineptr, ssize_t chars_read)
 
 	copy = strdup(lineptr);
 	if (copy == NULL)
-		exit(-1);
+	{
+		perror("strdup fail");
+		exit(EXIT_FAILURE);
+	}
 
 	token = strtok(copy, " ");
 	word_count = 0;
@@ -55,11 +101,14 @@ char **tokenize_input(char *lineptr, int word_count)
 
 	command = malloc(sizeof(char *) * word_count);
 	if (command == NULL)
-		exit(-1);
+	{
+		perror("malloc fail");
+		exit(EXIT_FAILURE);
+	}
 
 	token = strtok(lineptr, " ");
 	i = 0;
-	while (token != NULL)
+	while (token != NULL && i < word_count)
 	{
 		command[i] = strdup(token);
 		if (command[i] == NULL)
@@ -67,7 +116,8 @@ char **tokenize_input(char *lineptr, int word_count)
 			for (j = 0; j < i; j++)
 				free(command[j]);
 			free(command);
-			exit(-1);
+			perror("strdup fail");
+			exit(EXIT_FAILURE);
 		}
 		token = strtok(NULL, " ");
 		i++;
@@ -75,6 +125,51 @@ char **tokenize_input(char *lineptr, int word_count)
 	command[i] = NULL;
 
 	return (command);
+}
+
+/**
+ * execute - checks if a command exists and executes it
+ *
+ * @cmd: a list of strings that represents the command to be executed
+ * @prog: The name of the compiled program file
+ * @line: The line of input command into the current process
+ * @env: a list of environment variables
+ * @word_count: The number of elements in the command list
+ *
+ * Return: void
+ */
+
+void execute(char **cmd, char *prog, int line, char **env, int word_count)
+{
+	char *path;
+	int status, j;
+	pid_t child_pid;
+
+	path = which(cmd[0]);
+	child_pid = fork();
+	if (child_pid == -1)
+	{
+		perror("fork");
+		exit(EXIT_FAILURE);
+	}
+	if (child_pid == 0)
+	{
+		if (path == NULL)
+			no_path(prog, line, cmd[0]);
+		if (execve(path, cmd, env) == -1)
+		{
+			perror("execve");
+			_exit(EXIT_FAILURE);
+		}
+	}
+	else
+	{
+		wait(&status);
+		free(path);
+		for (j = 0; j < word_count; j++)
+			free(cmd[j]);
+		free(cmd);
+	}
 }
 
 /**
@@ -89,47 +184,34 @@ char **tokenize_input(char *lineptr, int word_count)
 int main(int argc, char *argv[], char *envp[])
 {
 	int interactive = isatty(STDIN_FILENO);
+	int line_num = 0;
+
+	(void) argc;
 
 	while (1)
 	{
 		char **command, *lineptr = NULL;
-		int j, status, word_count;
+		int word_count;
 		size_t n = 0;
 		ssize_t chars_read;
-		pid_t child_pid;
 
 		if (interactive)
-			printf("$ ");
+			printf("($) ");
 		chars_read = getline(&lineptr, &n, stdin);
-		if (chars_read == -1)
-			exit(-1);
+		line_num++;
+		if (chars_read == -1 && !interactive)
+		{
+			free(lineptr);
+			break;
+		}
 
 		word_count = count_words(lineptr, chars_read);
 		command = tokenize_input(lineptr, word_count);
-		free(lineptr);
 
 		if (word_count <= 1)
 			continue;
-		child_pid = fork();
-		if (child_pid == -1)
-			exit(-1);
-		if (child_pid == 0)
-		{
-			if (execve(command[0], command, envp) == -1)
-			{
-				perror("execve");
-				_exit(1);
-			}
-		}
-		else
-		{
-			wait(&status);
-			for (j = 0; j < word_count; j++)
-				free(command[j]);
-			free(command);
-		}
-		if (!interactive && word_count <= 1)
-			break;
+		execute(command, argv[0], line_num, envp, word_count);
+		free(lineptr);
 	}
-	return (0);
+	exit(EXIT_SUCCESS);
 }

@@ -24,6 +24,7 @@ typedef struct path_s
 	struct path_s *next;
 } path_t;
 
+char *which(char *file);
 char *_strtok(char *str, const char *delim);
 char *append(const char *str1, const char *str2);
 int _strcmp(const char *s1, const char *s2);
