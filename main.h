@@ -24,10 +24,14 @@ typedef struct path_s
 	struct path_s *next;
 } path_t;
 
+char *_strcpy(char *dest, const char *src);
+int printenv();
+int _strlen(const char *s);
 char *which(char *file);
-char *_strtok(char *str, const char *delim);
 char *append(const char *str1, const char *str2);
 int _strcmp(const char *s1, const char *s2);
+char *_strtok(char *str, const char *delim);
+char *_strdup(char *str);
 char *_getenv(const char *name);
 char *join_ch(const char *str1, const char *str2, const char ch);
 int _setenv(const char *name, const char *value, int overwrite);

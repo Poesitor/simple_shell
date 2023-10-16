@@ -17,14 +17,14 @@ char *_getenv(const char *name)
 
 	while (environ[i] != NULL)
 	{
-		element = strdup(environ[i]);
+		element = _strdup(environ[i]);
 		if (element == NULL)
 		{
 			perror("Memory allocation failed");
 			exit(EXIT_FAILURE);
 		}
 
-		token = strtok(element, "=");
+		token = _strtok(element, "=");
 		if (token == NULL)
 		{
 			free(element);
@@ -35,7 +35,7 @@ char *_getenv(const char *name)
 		if (_strcmp(token, name) == 0)
 		{
 			free(element);
-			value = environ[i] + (strlen(name) + 1);
+			value = environ[i] + (_strlen(name) + 1);
 			if (value == NULL)
 				return (NULL);
 			return (value);

@@ -1,22 +1,456 @@
-[0;33m./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/1.Simple_shell_0.1/bin_ls.bash[0m
+[0;33m./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/3.Simple_shell_0.3/bin_ls.bash[0m
 [0;32mOK[0m
 
-[0;33m./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/1.Simple_shell_0.1/bin_ls_3_times.bash[0m
+[0;33m./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/3.Simple_shell_0.3/bin_ls_1_arg_1.bash[0m
 [0;32mOK[0m
 
-[0;33m./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/1.Simple_shell_0.1/bin_ls_spaces.bash[0m
+[0;33m./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/3.Simple_shell_0.3/bin_ls_3_times.bash[0m
 [0;32mOK[0m
 
-[0;33m./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/1.Simple_shell_0.1/empty_input_large.bash[0m
+[0;33m./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/3.Simple_shell_0.3/bin_ls_empty_path.bash[0m
+(command)[echo "/bin/ls" | ./hsh]
+
+[GOT]:
+(stdout)[](Length: 0)
+(stderr)[PATH environment variable not set: Inappropriate ioctl for device
+](Length: 66)
+(status)[139]
+
+[EXPECTED]:
+(stdout)[AUTHORS
+README.md
+TEST_SUITE
+_getenv.c
+_strcmp.c
+_strcpy.c
+_strdup.c
+_strlen.c
+_strtok.c
+a.out
+allowed_functions
+hsh
+join_ch.c
+main.h
+output.txt
+printenv.c
+runchecker.bash
+shell.c
+test_ls_2
+which.c
+](Length: 198)
+(stderr)[](Length: 0)
+(status)[0]
+
+Environment:
+SHELL=/bin/bash
+PWD=/home/vagrant/simple_shell
+LOGNAME=vagrant
+XDG_SESSION_TYPE=tty
+MOTD_SHOWN=pam
+HOME=/home/vagrant
+LANG=C.UTF-8
+SSH_CONNECTION=10.0.2.2 60041 10.0.2.15 22
+LESSCLOSE=/usr/bin/lesspipe %s %s
+XDG_SESSION_CLASS=user
+TERM=xterm-256color
+LESSOPEN=| /usr/bin/lesspipe %s
+USER=vagrant
+SHLVL=3
+XDG_SESSION_ID=1
+XDG_RUNTIME_DIR=/run/user/1000
+SSH_CLIENT=10.0.2.2 60041 22
+XDG_DATA_DIRS=/usr/local/share:/usr/share:/var/lib/snapd/desktop
+DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+SSH_TTY=/dev/pts/0
+OLDPWD=/home/vagrant/shell
+_=/usr/bin/env
+
+[0;33m./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/3.Simple_shell_0.3/bin_ls_medium_input.bash[0m
+(command)[echo "                                       /bin/ls                                                                                                                                                                                                                                                                                                                                                                                                                                                     " | ./hsh]
+
+[GOT]:
+(stdout)[](Length: 0)
+(stderr)[/bin/ls: cannot access '': No such file or directory
+](Length: 53)
+(status)[0]
+
+[EXPECTED]:
+(stdout)[AUTHORS
+README.md
+TEST_SUITE
+_getenv.c
+_strcmp.c
+_strcpy.c
+_strdup.c
+_strlen.c
+_strtok.c
+a.out
+allowed_functions
+hsh
+join_ch.c
+main.h
+output.txt
+printenv.c
+runchecker.bash
+shell.c
+test_ls_2
+which.c
+](Length: 198)
+(stderr)[](Length: 0)
+(status)[0]
+
+Environment:
+SHELL=/bin/bash
+PWD=/home/vagrant/simple_shell
+LOGNAME=vagrant
+XDG_SESSION_TYPE=tty
+MOTD_SHOWN=pam
+HOME=/home/vagrant
+LANG=C.UTF-8
+SSH_CONNECTION=10.0.2.2 60041 10.0.2.15 22
+LESSCLOSE=/usr/bin/lesspipe %s %s
+XDG_SESSION_CLASS=user
+TERM=xterm-256color
+LESSOPEN=| /usr/bin/lesspipe %s
+USER=vagrant
+SHLVL=3
+XDG_SESSION_ID=1
+XDG_RUNTIME_DIR=/run/user/1000
+SSH_CLIENT=10.0.2.2 60041 22
+XDG_DATA_DIRS=/usr/local/share:/usr/share:/var/lib/snapd/desktop
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+SSH_TTY=/dev/pts/0
+OLDPWD=/home/vagrant/shell
+_=/usr/bin/env
+
+[0;33m./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/3.Simple_shell_0.3/bin_ls_spaces.bash[0m
+(command)[echo "/bin/ls
+     /bin/ls
+/bin/ls
+   /bin/ls     " | ./hsh]
+
+[GOT]:
+(stdout)[AUTHORS
+README.md
+TEST_SUITE
+_getenv.c
+_strcmp.c
+_strcpy.c
+_strdup.c
+_strlen.c
+_strtok.c
+a.out
+allowed_functions
+hsh
+join_ch.c
+main.h
+output.txt
+printenv.c
+runchecker.bash
+shell.c
+test_ls_2
+which.c
+AUTHORS
+README.md
+TEST_SUITE
+_getenv.c
+_strcmp.c
+_strcpy.c
+_strdup.c
+_strlen.c
+_strtok.c
+a.out
+allowed_functions
+hsh
+join_ch.c
+main.h
+output.txt
+printenv.c
+runchecker.bash
+shell.c
+test_ls_2
+which.c
+AUTHORS
+README.md
+TEST_SUITE
+_getenv.c
+_strcmp.c
+_strcpy.c
+_strdup.c
+_strlen.c
+_strtok.c
+a.out
+allowed_functions
+hsh
+join_ch.c
+main.h
+output.txt
+printenv.c
+runchecker.bash
+shell.c
+test_ls_2
+which.c
+](Length: 594)
+(stderr)[/bin/ls: cannot access '': No such file or directory
+](Length: 53)
+(status)[0]
+
+[EXPECTED]:
+(stdout)[AUTHORS
+README.md
+TEST_SUITE
+_getenv.c
+_strcmp.c
+_strcpy.c
+_strdup.c
+_strlen.c
+_strtok.c
+a.out
+allowed_functions
+hsh
+join_ch.c
+main.h
+output.txt
+printenv.c
+runchecker.bash
+shell.c
+test_ls_2
+which.c
+AUTHORS
+README.md
+TEST_SUITE
+_getenv.c
+_strcmp.c
+_strcpy.c
+_strdup.c
+_strlen.c
+_strtok.c
+a.out
+allowed_functions
+hsh
+join_ch.c
+main.h
+output.txt
+printenv.c
+runchecker.bash
+shell.c
+test_ls_2
+which.c
+AUTHORS
+README.md
+TEST_SUITE
+_getenv.c
+_strcmp.c
+_strcpy.c
+_strdup.c
+_strlen.c
+_strtok.c
+a.out
+allowed_functions
+hsh
+join_ch.c
+main.h
+output.txt
+printenv.c
+runchecker.bash
+shell.c
+test_ls_2
+which.c
+AUTHORS
+README.md
+TEST_SUITE
+_getenv.c
+_strcmp.c
+_strcpy.c
+_strdup.c
+_strlen.c
+_strtok.c
+a.out
+allowed_functions
+hsh
+join_ch.c
+main.h
+output.txt
+printenv.c
+runchecker.bash
+shell.c
+test_ls_2
+which.c
+](Length: 792)
+(stderr)[](Length: 0)
+(status)[0]
+
+Environment:
+SHELL=/bin/bash
+PWD=/home/vagrant/simple_shell
+LOGNAME=vagrant
+XDG_SESSION_TYPE=tty
+MOTD_SHOWN=pam
+HOME=/home/vagrant
+LANG=C.UTF-8
+SSH_CONNECTION=10.0.2.2 60041 10.0.2.15 22
+LESSCLOSE=/usr/bin/lesspipe %s %s
+XDG_SESSION_CLASS=user
+TERM=xterm-256color
+LESSOPEN=| /usr/bin/lesspipe %s
+USER=vagrant
+SHLVL=3
+XDG_SESSION_ID=1
+XDG_RUNTIME_DIR=/run/user/1000
+SSH_CLIENT=10.0.2.2 60041 22
+XDG_DATA_DIRS=/usr/local/share:/usr/share:/var/lib/snapd/desktop
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+SSH_TTY=/dev/pts/0
+OLDPWD=/home/vagrant/shell
+_=/usr/bin/env
+
+[0;33m./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/3.Simple_shell_0.3/empty_path_failing_cmd.bash[0m
+(command)[echo "hbtn_cmd" | ./hsh]
+
+[GOT]:
+(stdout)[](Length: 0)
+(stderr)[./hsh: 1: hbtn_cmd: not found
+](Length: 30)
+(status)[0]
+
+[EXPECTED]:
+(stdout)[](Length: 0)
+(stderr)[./hsh: 1: hbtn_cmd: not found
+](Length: 30)
+(status)[127]
+
+Environment:
+SHELL=/bin/bash
+PWD=/home/vagrant/simple_shell
+LOGNAME=vagrant
+XDG_SESSION_TYPE=tty
+MOTD_SHOWN=pam
+HOME=/home/vagrant
+LANG=C.UTF-8
+SSH_CONNECTION=10.0.2.2 60041 10.0.2.15 22
+LESSCLOSE=/usr/bin/lesspipe %s %s
+XDG_SESSION_CLASS=user
+TERM=xterm-256color
+LESSOPEN=| /usr/bin/lesspipe %s
+USER=vagrant
+SHLVL=3
+XDG_SESSION_ID=1
+XDG_RUNTIME_DIR=/run/user/1000
+SSH_CLIENT=10.0.2.2 60041 22
+XDG_DATA_DIRS=/usr/local/share:/usr/share:/var/lib/snapd/desktop
+PATH=
+DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+SSH_TTY=/dev/pts/0
+OLDPWD=/home/vagrant/shell
+_=/usr/bin/env
+
+[0;33m./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/3.Simple_shell_0.3/env_ignore_bin_ls.bash[0m
+(command)[echo "/bin/ls" | ./hsh]
+
+[GOT]:
+(stdout)[](Length: 0)
+(stderr)[PATH environment variable not set: Inappropriate ioctl for device
+](Length: 66)
+(status)[135]
+
+[EXPECTED]:
+(stdout)[AUTHORS
+README.md
+TEST_SUITE
+_getenv.c
+_strcmp.c
+_strcpy.c
+_strdup.c
+_strlen.c
+_strtok.c
+a.out
+allowed_functions
+hsh
+join_ch.c
+main.h
+output.txt
+printenv.c
+runchecker.bash
+shell.c
+test_ls_2
+which.c
+](Length: 198)
+(stderr)[](Length: 0)
+(status)[0]
+
+Environment:
+_=/usr/bin/env
+
+[0;33m./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/3.Simple_shell_0.3/env_ignore_ls.bash[0m
+(command)[echo "ls" | ./hsh]
+
+[GOT]:
+(stdout)[](Length: 0)
+(stderr)[PATH environment variable not set: Inappropriate ioctl for device
+](Length: 66)
+(status)[139]
+
+[EXPECTED]:
+(stdout)[](Length: 0)
+(stderr)[./hsh: 1: ls: not found
+](Length: 24)
+(status)[127]
+
+Environment:
+_=/usr/bin/env
+
+[0;33m./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/3.Simple_shell_0.3/ls_.bash[0m
 [0;32mOK[0m
 
-[0;33m./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/1.Simple_shell_0.1/empty_input_medium.bash[0m
+[0;33m./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/3.Simple_shell_0.3/ls_1_arg.bash[0m
 [0;32mOK[0m
 
-[0;33m./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/1.Simple_shell_0.1/empty_input_small.bash[0m
+[0;33m./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/3.Simple_shell_0.3/ls_dot_ls.bash[0m
 [0;32mOK[0m
 
-[0;33m./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/1.Simple_shell_0.1/ls_in_current_dir.bash[0m
+[0;33m./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/3.Simple_shell_0.3/ls_empty_path.bash[0m
+(command)[echo "ls" | ./hsh]
+
+[GOT]:
+(stdout)[](Length: 0)
+(stderr)[./hsh: 1: ls: not found
+](Length: 24)
+(status)[0]
+
+[EXPECTED]:
+(stdout)[](Length: 0)
+(stderr)[./hsh: 1: ls: not found
+](Length: 24)
+(status)[127]
+
+Environment:
+SHELL=/bin/bash
+PWD=/home/vagrant/simple_shell
+LOGNAME=vagrant
+XDG_SESSION_TYPE=tty
+MOTD_SHOWN=pam
+HOME=/home/vagrant
+LANG=C.UTF-8
+SSH_CONNECTION=10.0.2.2 60041 10.0.2.15 22
+LESSCLOSE=/usr/bin/lesspipe %s %s
+XDG_SESSION_CLASS=user
+TERM=xterm-256color
+LESSOPEN=| /usr/bin/lesspipe %s
+USER=vagrant
+SHLVL=3
+XDG_SESSION_ID=1
+XDG_RUNTIME_DIR=/run/user/1000
+SSH_CLIENT=10.0.2.2 60041 22
+XDG_DATA_DIRS=/usr/local/share:/usr/share:/var/lib/snapd/desktop
+PATH=
+DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+SSH_TTY=/dev/pts/0
+OLDPWD=/home/vagrant/shell
+_=/usr/bin/env
+
+[0;33m./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/3.Simple_shell_0.3/ls_in_current_dir.bash[0m
 (command)[echo "./hbtn_ls /var" | ./hsh]
 
 [GOT]:
@@ -51,22 +485,705 @@ XDG_SESSION_TYPE=tty
 MOTD_SHOWN=pam
 HOME=/home/vagrant
 LANG=C.UTF-8
-SSH_CONNECTION=10.0.2.2 62931 10.0.2.15 22
+SSH_CONNECTION=10.0.2.2 60041 10.0.2.15 22
 LESSCLOSE=/usr/bin/lesspipe %s %s
 XDG_SESSION_CLASS=user
 TERM=xterm-256color
 LESSOPEN=| /usr/bin/lesspipe %s
 USER=vagrant
 SHLVL=3
-XDG_SESSION_ID=8
+XDG_SESSION_ID=1
 XDG_RUNTIME_DIR=/run/user/1000
-SSH_CLIENT=10.0.2.2 62931 22
+SSH_CLIENT=10.0.2.2 60041 22
 XDG_DATA_DIRS=/usr/local/share:/usr/share:/var/lib/snapd/desktop
 PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
 DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
 SSH_TTY=/dev/pts/0
-OLDPWD=/home/vagrant
+OLDPWD=/home/vagrant/shell
 _=/usr/bin/env
 
-[0;34mNumber of OK outputs: 6[0m
-[0;34mTotal commands run: 7[0m
+[0;33m./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/3.Simple_shell_0.3/ls_in_parent_dir.bash[0m
+(command)[echo "../hbtn_ls /var" | ./hsh]
+
+[GOT]:
+(stdout)[](Length: 0)
+(stderr)[./hsh: 1: ../hbtn_ls: not found
+](Length: 32)
+(status)[0]
+
+[EXPECTED]:
+(stdout)[backups
+cache
+crash
+lib
+local
+lock
+log
+mail
+opt
+run
+snap
+spool
+tmp
+](Length: 67)
+(stderr)[](Length: 0)
+(status)[0]
+
+Environment:
+SHELL=/bin/bash
+PWD=/home/vagrant/simple_shell
+LOGNAME=vagrant
+XDG_SESSION_TYPE=tty
+MOTD_SHOWN=pam
+HOME=/home/vagrant
+LANG=C.UTF-8
+SSH_CONNECTION=10.0.2.2 60041 10.0.2.15 22
+LESSCLOSE=/usr/bin/lesspipe %s %s
+XDG_SESSION_CLASS=user
+TERM=xterm-256color
+LESSOPEN=| /usr/bin/lesspipe %s
+USER=vagrant
+SHLVL=3
+XDG_SESSION_ID=1
+XDG_RUNTIME_DIR=/run/user/1000
+SSH_CLIENT=10.0.2.2 60041 22
+XDG_DATA_DIRS=/usr/local/share:/usr/share:/var/lib/snapd/desktop
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+SSH_TTY=/dev/pts/0
+OLDPWD=/home/vagrant/shell
+_=/usr/bin/env
+
+[0;33m./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/3.Simple_shell_0.3/ls_in_two_parent_dir.bash[0m
+(command)[echo "../../hbtn_ls /var" | ./hsh]
+
+[GOT]:
+(stdout)[](Length: 0)
+(stderr)[./hsh: 1: ../../hbtn_ls: not found
+](Length: 35)
+(status)[0]
+
+[EXPECTED]:
+(stdout)[](Length: 0)
+(stderr)[./hsh: 1: ../../hbtn_ls: not found
+](Length: 35)
+(status)[127]
+
+Environment:
+SHELL=/bin/bash
+PWD=/home/vagrant/simple_shell
+LOGNAME=vagrant
+XDG_SESSION_TYPE=tty
+MOTD_SHOWN=pam
+HOME=/home/vagrant
+LANG=C.UTF-8
+SSH_CONNECTION=10.0.2.2 60041 10.0.2.15 22
+LESSCLOSE=/usr/bin/lesspipe %s %s
+XDG_SESSION_CLASS=user
+TERM=xterm-256color
+LESSOPEN=| /usr/bin/lesspipe %s
+USER=vagrant
+SHLVL=3
+XDG_SESSION_ID=1
+XDG_RUNTIME_DIR=/run/user/1000
+SSH_CLIENT=10.0.2.2 60041 22
+XDG_DATA_DIRS=/usr/local/share:/usr/share:/var/lib/snapd/desktop
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+SSH_TTY=/dev/pts/0
+OLDPWD=/home/vagrant/shell
+_=/usr/bin/env
+
+[0;33m./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/3.Simple_shell_0.3/ls_in_two_parent_dir_2.bash[0m
+(command)[echo "./.././../hbtn_ls /var" | ./hsh]
+
+[GOT]:
+(stdout)[](Length: 0)
+(stderr)[./hsh: 1: ./.././../hbtn_ls: not found
+](Length: 39)
+(status)[0]
+
+[EXPECTED]:
+(stdout)[](Length: 0)
+(stderr)[./hsh: 1: ./.././../hbtn_ls: not found
+](Length: 39)
+(status)[127]
+
+Environment:
+SHELL=/bin/bash
+PWD=/home/vagrant/simple_shell
+LOGNAME=vagrant
+XDG_SESSION_TYPE=tty
+MOTD_SHOWN=pam
+HOME=/home/vagrant
+LANG=C.UTF-8
+SSH_CONNECTION=10.0.2.2 60041 10.0.2.15 22
+LESSCLOSE=/usr/bin/lesspipe %s %s
+XDG_SESSION_CLASS=user
+TERM=xterm-256color
+LESSOPEN=| /usr/bin/lesspipe %s
+USER=vagrant
+SHLVL=3
+XDG_SESSION_ID=1
+XDG_RUNTIME_DIR=/run/user/1000
+SSH_CLIENT=10.0.2.2 60041 22
+XDG_DATA_DIRS=/usr/local/share:/usr/share:/var/lib/snapd/desktop
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+SSH_TTY=/dev/pts/0
+OLDPWD=/home/vagrant/shell
+_=/usr/bin/env
+
+[0;33m./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/3.Simple_shell_0.3/ls_in_two_parent_dir_3.bash[0m
+(command)[echo "./.././../////././hbtn_ls /var" | ./hsh]
+
+[GOT]:
+(stdout)[](Length: 0)
+(stderr)[./hsh: 1: ./.././../////././hbtn_ls: not found
+](Length: 47)
+(status)[0]
+
+[EXPECTED]:
+(stdout)[](Length: 0)
+(stderr)[./hsh: 1: ./.././../////././hbtn_ls: not found
+](Length: 47)
+(status)[127]
+
+Environment:
+SHELL=/bin/bash
+PWD=/home/vagrant/simple_shell
+LOGNAME=vagrant
+XDG_SESSION_TYPE=tty
+MOTD_SHOWN=pam
+HOME=/home/vagrant
+LANG=C.UTF-8
+SSH_CONNECTION=10.0.2.2 60041 10.0.2.15 22
+LESSCLOSE=/usr/bin/lesspipe %s %s
+XDG_SESSION_CLASS=user
+TERM=xterm-256color
+LESSOPEN=| /usr/bin/lesspipe %s
+USER=vagrant
+SHLVL=3
+XDG_SESSION_ID=1
+XDG_RUNTIME_DIR=/run/user/1000
+SSH_CLIENT=10.0.2.2 60041 22
+XDG_DATA_DIRS=/usr/local/share:/usr/share:/var/lib/snapd/desktop
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+SSH_TTY=/dev/pts/0
+OLDPWD=/home/vagrant/shell
+_=/usr/bin/env
+
+[0;33m./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/3.Simple_shell_0.3/ls_path_bin_first.bash[0m
+[0;32mOK[0m
+
+[0;33m./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/3.Simple_shell_0.3/ls_path_bin_last.bash[0m
+[0;32mOK[0m
+
+[0;33m./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/3.Simple_shell_0.3/ls_path_bin_middle.bash[0m
+[0;32mOK[0m
+
+[0;33m./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/3.Simple_shell_0.3/ls_path_no_bin.bash[0m
+[0;32mOK[0m
+
+[0;33m./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/3.Simple_shell_0.3/ls_spaces.bash[0m
+(command)[echo "ls
+     ls
+ls
+ ls     " | ./hsh]
+
+[GOT]:
+(stdout)[AUTHORS
+README.md
+TEST_SUITE
+_getenv.c
+_strcmp.c
+_strcpy.c
+_strdup.c
+_strlen.c
+_strtok.c
+a.out
+allowed_functions
+hsh
+join_ch.c
+main.h
+output.txt
+printenv.c
+runchecker.bash
+shell.c
+test_ls_2
+which.c
+AUTHORS
+README.md
+TEST_SUITE
+_getenv.c
+_strcmp.c
+_strcpy.c
+_strdup.c
+_strlen.c
+_strtok.c
+a.out
+allowed_functions
+hsh
+join_ch.c
+main.h
+output.txt
+printenv.c
+runchecker.bash
+shell.c
+test_ls_2
+which.c
+AUTHORS
+README.md
+TEST_SUITE
+_getenv.c
+_strcmp.c
+_strcpy.c
+_strdup.c
+_strlen.c
+_strtok.c
+a.out
+allowed_functions
+hsh
+join_ch.c
+main.h
+output.txt
+printenv.c
+runchecker.bash
+shell.c
+test_ls_2
+which.c
+](Length: 594)
+(stderr)[ls: cannot access '': No such file or directory
+](Length: 48)
+(status)[0]
+
+[EXPECTED]:
+(stdout)[AUTHORS
+README.md
+TEST_SUITE
+_getenv.c
+_strcmp.c
+_strcpy.c
+_strdup.c
+_strlen.c
+_strtok.c
+a.out
+allowed_functions
+hsh
+join_ch.c
+main.h
+output.txt
+printenv.c
+runchecker.bash
+shell.c
+test_ls_2
+which.c
+AUTHORS
+README.md
+TEST_SUITE
+_getenv.c
+_strcmp.c
+_strcpy.c
+_strdup.c
+_strlen.c
+_strtok.c
+a.out
+allowed_functions
+hsh
+join_ch.c
+main.h
+output.txt
+printenv.c
+runchecker.bash
+shell.c
+test_ls_2
+which.c
+AUTHORS
+README.md
+TEST_SUITE
+_getenv.c
+_strcmp.c
+_strcpy.c
+_strdup.c
+_strlen.c
+_strtok.c
+a.out
+allowed_functions
+hsh
+join_ch.c
+main.h
+output.txt
+printenv.c
+runchecker.bash
+shell.c
+test_ls_2
+which.c
+AUTHORS
+README.md
+TEST_SUITE
+_getenv.c
+_strcmp.c
+_strcpy.c
+_strdup.c
+_strlen.c
+_strtok.c
+a.out
+allowed_functions
+hsh
+join_ch.c
+main.h
+output.txt
+printenv.c
+runchecker.bash
+shell.c
+test_ls_2
+which.c
+](Length: 792)
+(stderr)[](Length: 0)
+(status)[0]
+
+Environment:
+SHELL=/bin/bash
+PWD=/home/vagrant/simple_shell
+LOGNAME=vagrant
+XDG_SESSION_TYPE=tty
+MOTD_SHOWN=pam
+HOME=/home/vagrant
+LANG=C.UTF-8
+SSH_CONNECTION=10.0.2.2 60041 10.0.2.15 22
+LESSCLOSE=/usr/bin/lesspipe %s %s
+XDG_SESSION_CLASS=user
+TERM=xterm-256color
+LESSOPEN=| /usr/bin/lesspipe %s
+USER=vagrant
+SHLVL=3
+XDG_SESSION_ID=1
+XDG_RUNTIME_DIR=/run/user/1000
+SSH_CLIENT=10.0.2.2 60041 22
+XDG_DATA_DIRS=/usr/local/share:/usr/share:/var/lib/snapd/desktop
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+SSH_TTY=/dev/pts/0
+OLDPWD=/home/vagrant/shell
+_=/usr/bin/env
+
+[0;33m./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/3.Simple_shell_0.3/mix_ls_bin_ls.bash[0m
+[0;32mOK[0m
+
+[0;33m./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/3.Simple_shell_0.3/mix_ls_bin_ls_spaces.bash[0m
+(command)[echo "ls
+
+
+ /bin/ls
+
+
+     ls
+ls
+ ls     " | ./hsh]
+
+[GOT]:
+(stdout)[AUTHORS
+README.md
+TEST_SUITE
+_getenv.c
+_strcmp.c
+_strcpy.c
+_strdup.c
+_strlen.c
+_strtok.c
+a.out
+allowed_functions
+hsh
+join_ch.c
+main.h
+output.txt
+printenv.c
+runchecker.bash
+shell.c
+test_ls_2
+which.c
+AUTHORS
+README.md
+TEST_SUITE
+_getenv.c
+_strcmp.c
+_strcpy.c
+_strdup.c
+_strlen.c
+_strtok.c
+a.out
+allowed_functions
+hsh
+join_ch.c
+main.h
+output.txt
+printenv.c
+runchecker.bash
+shell.c
+test_ls_2
+which.c
+AUTHORS
+README.md
+TEST_SUITE
+_getenv.c
+_strcmp.c
+_strcpy.c
+_strdup.c
+_strlen.c
+_strtok.c
+a.out
+allowed_functions
+hsh
+join_ch.c
+main.h
+output.txt
+printenv.c
+runchecker.bash
+shell.c
+test_ls_2
+which.c
+AUTHORS
+README.md
+TEST_SUITE
+_getenv.c
+_strcmp.c
+_strcpy.c
+_strdup.c
+_strlen.c
+_strtok.c
+a.out
+allowed_functions
+hsh
+join_ch.c
+main.h
+output.txt
+printenv.c
+runchecker.bash
+shell.c
+test_ls_2
+which.c
+](Length: 792)
+(stderr)[execve: Permission denied
+execve: Permission denied
+execve: Permission denied
+execve: Permission denied
+ls: cannot access '': No such file or directory
+](Length: 152)
+(status)[0]
+
+[EXPECTED]:
+(stdout)[AUTHORS
+README.md
+TEST_SUITE
+_getenv.c
+_strcmp.c
+_strcpy.c
+_strdup.c
+_strlen.c
+_strtok.c
+a.out
+allowed_functions
+hsh
+join_ch.c
+main.h
+output.txt
+printenv.c
+runchecker.bash
+shell.c
+test_ls_2
+which.c
+AUTHORS
+README.md
+TEST_SUITE
+_getenv.c
+_strcmp.c
+_strcpy.c
+_strdup.c
+_strlen.c
+_strtok.c
+a.out
+allowed_functions
+hsh
+join_ch.c
+main.h
+output.txt
+printenv.c
+runchecker.bash
+shell.c
+test_ls_2
+which.c
+AUTHORS
+README.md
+TEST_SUITE
+_getenv.c
+_strcmp.c
+_strcpy.c
+_strdup.c
+_strlen.c
+_strtok.c
+a.out
+allowed_functions
+hsh
+join_ch.c
+main.h
+output.txt
+printenv.c
+runchecker.bash
+shell.c
+test_ls_2
+which.c
+AUTHORS
+README.md
+TEST_SUITE
+_getenv.c
+_strcmp.c
+_strcpy.c
+_strdup.c
+_strlen.c
+_strtok.c
+a.out
+allowed_functions
+hsh
+join_ch.c
+main.h
+output.txt
+printenv.c
+runchecker.bash
+shell.c
+test_ls_2
+which.c
+AUTHORS
+README.md
+TEST_SUITE
+_getenv.c
+_strcmp.c
+_strcpy.c
+_strdup.c
+_strlen.c
+_strtok.c
+a.out
+allowed_functions
+hsh
+join_ch.c
+main.h
+output.txt
+printenv.c
+runchecker.bash
+shell.c
+test_ls_2
+which.c
+](Length: 990)
+(stderr)[](Length: 0)
+(status)[0]
+
+Environment:
+SHELL=/bin/bash
+PWD=/home/vagrant/simple_shell
+LOGNAME=vagrant
+XDG_SESSION_TYPE=tty
+MOTD_SHOWN=pam
+HOME=/home/vagrant
+LANG=C.UTF-8
+SSH_CONNECTION=10.0.2.2 60041 10.0.2.15 22
+LESSCLOSE=/usr/bin/lesspipe %s %s
+XDG_SESSION_CLASS=user
+TERM=xterm-256color
+LESSOPEN=| /usr/bin/lesspipe %s
+USER=vagrant
+SHLVL=3
+XDG_SESSION_ID=1
+XDG_RUNTIME_DIR=/run/user/1000
+SSH_CLIENT=10.0.2.2 60041 22
+XDG_DATA_DIRS=/usr/local/share:/usr/share:/var/lib/snapd/desktop
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+SSH_TTY=/dev/pts/0
+OLDPWD=/home/vagrant/shell
+_=/usr/bin/env
+
+[0;33m./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/3.Simple_shell_0.3/path_current_dir_ls.bash[0m
+[0;32mOK[0m
+
+[0;33m./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/3.Simple_shell_0.3/path_path1_var.bash[0m
+(command)[echo "hbtn_ls" | ./hsh]
+
+[GOT]:
+(stdout)[](Length: 0)
+(stderr)[PATH environment variable not set: Inappropriate ioctl for device
+](Length: 66)
+(status)[139]
+
+[EXPECTED]:
+(stdout)[](Length: 0)
+(stderr)[./hsh: 1: hbtn_ls: not found
+](Length: 29)
+(status)[127]
+
+Environment:
+SHELL=/bin/bash
+PWD=/home/vagrant/simple_shell
+LOGNAME=vagrant
+XDG_SESSION_TYPE=tty
+MOTD_SHOWN=pam
+HOME=/home/vagrant
+LANG=C.UTF-8
+SSH_CONNECTION=10.0.2.2 60041 10.0.2.15 22
+LESSCLOSE=/usr/bin/lesspipe %s %s
+XDG_SESSION_CLASS=user
+TERM=xterm-256color
+LESSOPEN=| /usr/bin/lesspipe %s
+USER=vagrant
+SHLVL=3
+XDG_SESSION_ID=1
+PATH1=/home/vagrant/simple_shell
+XDG_RUNTIME_DIR=/run/user/1000
+SSH_CLIENT=10.0.2.2 60041 22
+XDG_DATA_DIRS=/usr/local/share:/usr/share:/var/lib/snapd/desktop
+DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+SSH_TTY=/dev/pts/0
+OLDPWD=/home/vagrant/shell
+_=/usr/bin/env
+
+[0;33m./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/3.Simple_shell_0.3/unknown_command_no_fork.bash[0m
+(command)[echo "hbtn" | ./hsh]
+
+[GOT]:
+(stdout)[](Length: 0)
+(stderr)[./hsh: 1: hbtn: not found
+](Length: 26)
+(status)[0]
+
+[EXPECTED]:
+(stdout)[](Length: 0)
+(stderr)[./hsh: 1: hbtn: not found
+](Length: 26)
+(status)[127]
+
+Environment:
+SHELL=/bin/bash
+PWD=/home/vagrant/simple_shell
+LOGNAME=vagrant
+XDG_SESSION_TYPE=tty
+MOTD_SHOWN=pam
+HOME=/home/vagrant
+LANG=C.UTF-8
+SSH_CONNECTION=10.0.2.2 60041 10.0.2.15 22
+LESSCLOSE=/usr/bin/lesspipe %s %s
+XDG_SESSION_CLASS=user
+TERM=xterm-256color
+LESSOPEN=| /usr/bin/lesspipe %s
+USER=vagrant
+SHLVL=3
+XDG_SESSION_ID=1
+XDG_RUNTIME_DIR=/run/user/1000
+SSH_CLIENT=10.0.2.2 60041 22
+XDG_DATA_DIRS=/usr/local/share:/usr/share:/var/lib/snapd/desktop
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+SSH_TTY=/dev/pts/0
+OLDPWD=/home/vagrant/shell
+_=/usr/bin/env
+
+[0;34mNumber of OK outputs: 12[0m
+[0;34mTotal commands run: 28[0m

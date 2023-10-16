@@ -20,26 +20,26 @@ char *which(char *file)
 	if (path == NULL)
 	{
 		perror("PATH environment variable not set");
-		return (NULL);
+		return (file);
 	}
 
-	copy = strdup(path);
+	copy = _strdup(path);
 	if (copy == NULL)
 	{
 		perror("Memory allocation failed");
 		return (NULL);
 	}
-	token = strtok(copy, ":");
+	token = _strtok(copy, ":");
 	while (token != NULL)
 	{
 		if (file[0] == '/')
-			fullpath = strdup(file);
+			fullpath = _strdup(file);
 		else
 			fullpath = join_ch(token, file, '/');
 		if (stat(fullpath, &st) == 0)
 			break;
 		free(fullpath);
-		token = strtok(NULL, ":");
+		token = _strtok(NULL, ":");
 		if (token == NULL)
 			fullpath = NULL;
 	}

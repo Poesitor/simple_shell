@@ -36,13 +36,13 @@ void no_path(char *name, int num, char *command)
 		num /= 10;
 	}
 
-	write(STDERR_FILENO, name, strlen(name));
+	write(STDERR_FILENO, name, _strlen(name));
 	write(STDERR_FILENO, ": ", 2);
-	write(STDERR_FILENO, num_str, strlen(num_str));
+	write(STDERR_FILENO, num_str, _strlen(num_str));
 	write(STDERR_FILENO, ": ", 2);
-	write(STDERR_FILENO, command, strlen(command));
+	write(STDERR_FILENO, command, _strlen(command));
 	write(STDERR_FILENO, ": ", 2);
-	write(STDERR_FILENO, err_msg, strlen(err_msg));
+	write(STDERR_FILENO, err_msg, _strlen(err_msg));
 
 	free(num_str);
 	_exit(EXIT_SUCCESS);
@@ -64,19 +64,19 @@ int count_words(char *lineptr, ssize_t chars_read)
 	if (lineptr[chars_read - 1] == '\n')
 		lineptr[chars_read - 1] = '\0';
 
-	copy = strdup(lineptr);
+	copy = _strdup(lineptr);
 	if (copy == NULL)
 	{
 		perror("strdup fail");
 		exit(EXIT_FAILURE);
 	}
 
-	token = strtok(copy, " ");
+	token = _strtok(copy, " ");
 	word_count = 0;
 	while (token != NULL)
 	{
 		word_count++;
-		token = strtok(NULL, " ");
+		token = _strtok(NULL, " ");
 	}
 	word_count++;
 	free(copy);
@@ -106,11 +106,11 @@ char **tokenize_input(char *lineptr, int word_count)
 		exit(EXIT_FAILURE);
 	}
 
-	token = strtok(lineptr, " ");
+	token = _strtok(lineptr, " ");
 	i = 0;
 	while (token != NULL && i < word_count)
 	{
-		command[i] = strdup(token);
+		command[i] = _strdup(token);
 		if (command[i] == NULL)
 		{
 			for (j = 0; j < i; j++)
@@ -119,7 +119,7 @@ char **tokenize_input(char *lineptr, int word_count)
 			perror("strdup fail");
 			exit(EXIT_FAILURE);
 		}
-		token = strtok(NULL, " ");
+		token = _strtok(NULL, " ");
 		i++;
 	}
 	command[i] = NULL;

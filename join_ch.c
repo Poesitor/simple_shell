@@ -21,13 +21,13 @@ char *join_ch(const char *str1, const char *str2, const char ch)
 		return (NULL);
 	}
 
-	strcpy(result, str1);
+	_strcpy(result, str1);
 	if (result[len1 - 1] != ch)
 	{
 		result[len1] = ch;
 		len1++;
 	}
 
-	strcpy(result + len1, str2);
+	_strcpy(result + len1, str2);
 	return (result);
 }
