@@ -22,22 +22,22 @@ char *_strtok(char *str, const char *delim)
 	if (str == NULL)
 	{
 		if (called < 1)
-		{
-			perror("pass valid string as parameter on first call");
 			return (NULL);
-		}
 		else if (next_token == NULL)
-		{
 			return (NULL);
-		}
-		else
-			str = next_token;
+		str = next_token;
 	}
 
+	if (str[i] == '\0')
+		return (NULL);
 	while (str[i] == *delim)
+	{
 		i++;
+		if (str[i] == '\0')
+			return (NULL);
+	}
 	j = i;
-	for (i = i; str[i] != '\0'; i++)
+	for (; str[i] != '\0'; i++)
 	{
 		if (str[i] == *delim)
 		{

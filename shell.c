@@ -45,7 +45,7 @@ void no_path(char *name, int num, char *command)
 	write(STDERR_FILENO, err_msg, _strlen(err_msg));
 
 	free(num_str);
-	_exit(EXIT_SUCCESS);
+	_exit(127);
 }
 
 /**
@@ -98,7 +98,6 @@ char **tokenize_input(char *lineptr, int word_count)
 	char *token, **command;
 	int i, j;
 
-
 	command = malloc(sizeof(char *) * word_count);
 	if (command == NULL)
 	{
@@ -134,12 +133,11 @@ char **tokenize_input(char *lineptr, int word_count)
  * @prog: The name of the compiled program file
  * @line: The line of input command into the current process
  * @env: a list of environment variables
- * @word_count: The number of elements in the command list
- *
+ * @ex_code: a pointer to the exit code of the proram
  * Return: void
  */
 
-void execute(char **cmd, char *prog, int line, char **env, int word_count)
+void execute(char **cmd, char *prog, int line, char **env, int *ex_code)
 {
 	char *path;
 	int status, j;
@@ -166,10 +164,11 @@ void execute(char **cmd, char *prog, int line, char **env, int word_count)
 	{
 		wait(&status);
 		free(path);
-		for (j = 0; j < word_count; j++)
+		for (j = 0; cmd[j] != NULL; j++)
 			free(cmd[j]);
 		free(cmd);
 	}
+	*ex_code = WEXITSTATUS(status);
 }
 
 /**
@@ -185,6 +184,7 @@ int main(int argc, char *argv[], char *envp[])
 {
 	int interactive = isatty(STDIN_FILENO);
 	int line_num = 0;
+	int ex_code;
 
 	(void) argc;
 
@@ -210,8 +210,8 @@ int main(int argc, char *argv[], char *envp[])
 
 		if (word_count <= 1)
 			continue;
-		execute(command, argv[0], line_num, envp, word_count);
+		execute(command, argv[0], line_num, envp, &ex_code);
 		free(lineptr);
 	}
-	exit(EXIT_SUCCESS);
+	exit(ex_code);
 }
