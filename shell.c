@@ -168,8 +168,7 @@ void execute(char **cmd, char *prog, int line, char **env, int *ex_code)
 			free(cmd[j]);
 		free(cmd);
 	}
-	/**ex_code = WEXITSTATUS(status);*/
-	*ex_code = 127;
+	*ex_code = WEXITSTATUS(status);
 }
 
 /**
@@ -200,8 +199,10 @@ int main(int argc, char *argv[], char *envp[])
 			_puts("($) ");
 		chars_read = getline(&lineptr, &n, stdin);
 		line_num++;
-		if (chars_read == -1 && !interactive)
+		if (chars_read == -1)
 		{
+			if (interactive)
+				_putchar('\n');
 			free(lineptr);
 			break;
 		}
@@ -210,7 +211,10 @@ int main(int argc, char *argv[], char *envp[])
 		command = tokenize_input(lineptr, word_count);
 
 		if (word_count <= 1)
+		{
+			free(lineptr);
 			continue;
+		}
 		execute(command, argv[0], line_num, envp, &ex_code);
 		free(lineptr);
 	}
