@@ -143,7 +143,10 @@ void execute(char **cmd, char *prog, int line, char **env, int *ex_code)
 	int status, j;
 	pid_t child_pid;
 
-	path = which(cmd[0]);
+	if (access(cmd[0], X_OK) == 0)
+		path = _strdup(cmd[0]);
+	else
+		path = which(cmd[0]);
 	child_pid = fork();
 	if (child_pid == -1)
 	{
