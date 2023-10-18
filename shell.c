@@ -184,7 +184,7 @@ int main(int argc, char *argv[], char *envp[])
 {
 	int interactive = isatty(STDIN_FILENO);
 	int line_num = 0;
-	int ex_code;
+	int ex_code = 0;
 
 	(void) argc;
 
