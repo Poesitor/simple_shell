@@ -85,47 +85,14 @@ int count_words(char *lineptr, ssize_t chars_read)
 }
 
 /**
- * tokenize_input - splits the string by using the space between words
- * as delimeter. Hence, converting the string into an array of words
- *
- * @lineptr: The string to be split
- * @word_count: The number of words in lineptr
- *
- * Return: an array of each word in lineptr
+ * sighandler - handles the signal interrupt
+ * @sig: unused variable necessary for sighandler function types
  */
-char **tokenize_input(char *lineptr, int word_count)
+void sighandler(int sig)
 {
-	char *token, **command;
-	int i, j;
-
-	command = malloc(sizeof(char *) * word_count);
-	if (command == NULL)
-	{
-		perror("malloc fail");
-		exit(EXIT_FAILURE);
-	}
-
-	token = _strtok(lineptr, " ");
-	i = 0;
-	while (token != NULL && i < word_count)
-	{
-		command[i] = _strdup(token);
-		if (command[i] == NULL)
-		{
-			for (j = 0; j < i; j++)
-				free(command[j]);
-			free(command);
-			perror("strdup fail");
-			exit(EXIT_FAILURE);
-		}
-		token = _strtok(NULL, " ");
-		i++;
-	}
-	command[i] = NULL;
-
-	return (command);
+	(void)sig;
+	_puts("\n($) ");
 }
-
 /**
  * execute - checks if a command exists and executes it
  *
@@ -190,6 +157,7 @@ int main(int argc, char *argv[], char *envp[])
 	int ex_code = 0;
 
 	(void) argc;
+	signal(SIGINT, sighandler);
 
 	while (1)
 	{
