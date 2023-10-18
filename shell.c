@@ -5,7 +5,7 @@
  *
  * @name: program name
  * @num: the line number the command was found
- * @command: The command intended to be run
+ * @cmd: The command intended to be run
  *
  * Return: void
  */
