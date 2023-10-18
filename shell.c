@@ -45,7 +45,7 @@ void no_path(char *name, int num, char *command)
 	write(STDERR_FILENO, err_msg, _strlen(err_msg));
 
 	free(num_str);
-	_exit(127);
+	_exit(EXIT_FAILURE);
 }
 
 /**
