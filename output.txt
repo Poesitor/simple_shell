@@ -2,22 +2,3 @@
 [0;32mOK[0m
 
 [0;33m./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/1.Simple_shell_0.1/bin_ls_3_times.bash[0m
-[0;32mOK[0m
-
-[0;33m./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/1.Simple_shell_0.1/bin_ls_spaces.bash[0m
-[0;32mOK[0m
-
-[0;33m./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/1.Simple_shell_0.1/empty_input_large.bash[0m
-[0;32mOK[0m
-
-[0;33m./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/1.Simple_shell_0.1/empty_input_medium.bash[0m
-[0;32mOK[0m
-
-[0;33m./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/1.Simple_shell_0.1/empty_input_small.bash[0m
-[0;32mOK[0m
-
-[0;33m./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/1.Simple_shell_0.1/ls_in_current_dir.bash[0m
-[0;32mOK[0m
-
-[0;34mNumber of OK outputs: 7[0m
-[0;34mTotal commands run: 7[0m

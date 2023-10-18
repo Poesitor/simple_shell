@@ -19,10 +19,7 @@ char *which(char *file)
 	path = _getenv("PATH");
 	if (path == NULL)
 	{
-		if (file[0] != '/')
-			return (NULL);
-		fullpath = _strdup(file);
-		return (fullpath);
+		return (NULL);
 	}
 
 	copy = _strdup(path);
