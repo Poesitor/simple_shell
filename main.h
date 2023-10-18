@@ -27,7 +27,7 @@ typedef struct path_s
 void _puts(char *s);
 int _putchar(char c);
 char *_strcpy(char *dest, const char *src);
-int printenv();
+int printenv(void);
 int _strlen(const char *s);
 char *which(char *file);
 char *append(const char *str1, const char *str2);
