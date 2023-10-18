@@ -9,11 +9,12 @@
  *
  * Return: void
  */
-void no_path(char *name, int num, char *command)
+void no_path(char *name, int num, char **cmd)
 {
-	int count = 0;
+	int count = 0, j = 0;
 	int temp = num;
 	char *num_str;
+	char *command = cmd[0];
 	char *err_msg = "not found\n";
 
 	while (temp != 0)
@@ -45,6 +46,10 @@ void no_path(char *name, int num, char *command)
 	write(STDERR_FILENO, err_msg, _strlen(err_msg));
 
 	free(num_str);
+
+	for (j = 0; cmd[j] != NULL; j++)
+		free(cmd[j]);
+	free(cmd);
 	_exit(127);
 }
 
@@ -123,12 +128,15 @@ void execute(char **cmd, char *prog, int line, char **env, int *ex_code)
 	if (child_pid == 0)
 	{
 		if (path == NULL)
-			no_path(prog, line, cmd[0]);
+			no_path(prog, line, cmd);
 		if (execve(path, cmd, env) == -1)
 		{
 			perror("execve");
 			_exit(EXIT_FAILURE);
 		}
+		for (j = 0; cmd[j] != NULL; j++)
+			free(cmd[j]);
+		free(cmd);
 	}
 	else
 	{
@@ -180,6 +188,7 @@ int main(int argc, char *argv[], char *envp[])
 
 		word_count = count_words(lineptr, chars_read);
 		command = tokenize_input(lineptr, word_count);
+		free(lineptr);
 
 		if (word_count <= 1)
 		{
@@ -187,7 +196,6 @@ int main(int argc, char *argv[], char *envp[])
 			continue;
 		}
 		execute(command, argv[0], line_num, envp, &ex_code);
-		free(lineptr);
 	}
 	exit(ex_code);
 }
