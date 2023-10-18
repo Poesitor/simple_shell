@@ -24,6 +24,8 @@ typedef struct path_s
 	struct path_s *next;
 } path_t;
 
+void _puts(char *s);
+int _putchar(char c);
 char *_strcpy(char *dest, const char *src);
 int printenv();
 int _strlen(const char *s);

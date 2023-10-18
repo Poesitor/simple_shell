@@ -1,66 +1,13 @@
-[0;33m./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/3.Simple_shell_0.3/bin_ls.bash[0m
-[0;32mOK[0m
-
-[0;33m./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/3.Simple_shell_0.3/bin_ls_1_arg_1.bash[0m
-[0;32mOK[0m
-
-[0;33m./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/3.Simple_shell_0.3/bin_ls_3_times.bash[0m
-[0;32mOK[0m
-
-[0;33m./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/3.Simple_shell_0.3/bin_ls_empty_path.bash[0m
-[0;32mOK[0m
-
-[0;33m./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/3.Simple_shell_0.3/bin_ls_medium_input.bash[0m
-[0;32mOK[0m
-
-[0;33m./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/3.Simple_shell_0.3/bin_ls_spaces.bash[0m
-[0;32mOK[0m
-
-[0;33m./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/3.Simple_shell_0.3/empty_path_failing_cmd.bash[0m
-[0;32mOK[0m
-
-[0;33m./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/3.Simple_shell_0.3/env_ignore_bin_ls.bash[0m
-[0;32mOK[0m
-
-[0;33m./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/3.Simple_shell_0.3/env_ignore_ls.bash[0m
-[0;32mOK[0m
-
-[0;33m./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/3.Simple_shell_0.3/ls_.bash[0m
-[0;32mOK[0m
-
-[0;33m./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/3.Simple_shell_0.3/ls_1_arg.bash[0m
-[0;32mOK[0m
-
-[0;33m./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/3.Simple_shell_0.3/ls_dot_ls.bash[0m
-[0;32mOK[0m
-
-[0;33m./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/3.Simple_shell_0.3/ls_empty_path.bash[0m
-[0;32mOK[0m
-
-[0;33m./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/3.Simple_shell_0.3/ls_in_current_dir.bash[0m
-(command)[echo "./hbtn_ls /var" | ./hsh]
+[0;33m./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/16.File_as_input/shell_with_empty_file.bash[0m
+(command)[./hsh /tmp/hbtn_checker_tmp_19050]
 
 [GOT]:
 (stdout)[](Length: 0)
-(stderr)[./hsh: 1: ./hbtn_ls: not found
-](Length: 31)
-(status)[127]
+(stderr)[](Length: 0)
+(status)[125]
 
 [EXPECTED]:
-(stdout)[backups
-cache
-crash
-lib
-local
-lock
-log
-mail
-opt
-run
-snap
-spool
-tmp
-](Length: 67)
+(stdout)[](Length: 0)
 (stderr)[](Length: 0)
 (status)[0]
 
@@ -86,33 +33,20 @@ XDG_DATA_DIRS=/usr/local/share:/usr/share:/var/lib/snapd/desktop
 PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
 DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
 SSH_TTY=/dev/pts/0
-OLDPWD=/home/vagrant/simple_shell/TEST_SUITE/3.Simple_shell_0.3
+OLDPWD=/home/vagrant/simple_shell/TEST_SUITE/4.Simple_shell_0.4
 _=/usr/bin/env
 
-[0;33m./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/3.Simple_shell_0.3/ls_in_parent_dir.bash[0m
-(command)[echo "../hbtn_ls /var" | ./hsh]
+[0;33m./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/16.File_as_input/shell_with_file.bash[0m
+(command)[./hsh /tmp/hbtn_checker_tmp_3095]
 
 [GOT]:
 (stdout)[](Length: 0)
-(stderr)[./hsh: 1: ../hbtn_ls: not found
-](Length: 32)
-(status)[127]
+(stderr)[](Length: 0)
+(status)[125]
 
 [EXPECTED]:
-(stdout)[backups
-cache
-crash
-lib
-local
-lock
-log
-mail
-opt
-run
-snap
-spool
-tmp
-](Length: 67)
+(stdout)[hbtn
+](Length: 5)
 (stderr)[](Length: 0)
 (status)[0]
 
@@ -138,10 +72,157 @@ XDG_DATA_DIRS=/usr/local/share:/usr/share:/var/lib/snapd/desktop
 PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
 DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
 SSH_TTY=/dev/pts/0
-OLDPWD=/home/vagrant/simple_shell/TEST_SUITE/3.Simple_shell_0.3
+OLDPWD=/home/vagrant/simple_shell/TEST_SUITE/4.Simple_shell_0.4
 _=/usr/bin/env
 
-[0;33m./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/3.Simple_shell_0.3/ls_in_two_parent_dir.bash[0m
-[0;32mOK[0m
+[0;33m./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/16.File_as_input/shell_with_file_1.bash[0m
+(command)[./hsh /tmp/hbtn_checker_tmp_4304]
 
-[0;33m./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/3.Simple_shell_0.3/ls_in_two_parent_dir_2.bash[0m
+[GOT]:
+(stdout)[](Length: 0)
+(stderr)[](Length: 0)
+(status)[125]
+
+[EXPECTED]:
+(stdout)[AUTHORS
+README.md
+TEST_SUITE
+_getenv.c
+_strcmp.c
+_strcpy.c
+_strdup.c
+_strlen.c
+_strtok.c
+allowed_functions
+hsh
+join_ch.c
+main.h
+output.txt
+runchecker.bash
+shell.c
+test_ls_2
+which.c
+AUTHORS
+README.md
+TEST_SUITE
+_getenv.c
+_strcmp.c
+_strcpy.c
+_strdup.c
+_strlen.c
+_strtok.c
+allowed_functions
+hsh
+join_ch.c
+main.h
+output.txt
+runchecker.bash
+shell.c
+test_ls_2
+which.c
+AUTHORS
+README.md
+TEST_SUITE
+_getenv.c
+_strcmp.c
+_strcpy.c
+_strdup.c
+_strlen.c
+_strtok.c
+allowed_functions
+hsh
+join_ch.c
+main.h
+output.txt
+runchecker.bash
+shell.c
+test_ls_2
+which.c
+AUTHORS
+README.md
+TEST_SUITE
+_getenv.c
+_strcmp.c
+_strcpy.c
+_strdup.c
+_strlen.c
+_strtok.c
+allowed_functions
+hsh
+join_ch.c
+main.h
+output.txt
+runchecker.bash
+shell.c
+test_ls_2
+which.c
+](Length: 724)
+(stderr)[](Length: 0)
+(status)[0]
+
+Environment:
+SHELL=/bin/bash
+PWD=/home/vagrant/simple_shell
+LOGNAME=vagrant
+XDG_SESSION_TYPE=tty
+MOTD_SHOWN=pam
+HOME=/home/vagrant
+LANG=C.UTF-8
+SSH_CONNECTION=10.0.2.2 49794 10.0.2.15 22
+LESSCLOSE=/usr/bin/lesspipe %s %s
+XDG_SESSION_CLASS=user
+TERM=xterm-256color
+LESSOPEN=| /usr/bin/lesspipe %s
+USER=vagrant
+SHLVL=3
+XDG_SESSION_ID=3
+XDG_RUNTIME_DIR=/run/user/1000
+SSH_CLIENT=10.0.2.2 49794 22
+XDG_DATA_DIRS=/usr/local/share:/usr/share:/var/lib/snapd/desktop
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+SSH_TTY=/dev/pts/0
+OLDPWD=/home/vagrant/simple_shell/TEST_SUITE/4.Simple_shell_0.4
+_=/usr/bin/env
+
+[0;33m./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/16.File_as_input/shell_with_unknown_file.bash[0m
+(command)[./hsh /tmp/hbtn_checker_tmp_13539]
+
+[GOT]:
+(stdout)[](Length: 0)
+(stderr)[](Length: 0)
+(status)[125]
+
+[EXPECTED]:
+(stdout)[](Length: 0)
+(stderr)[./hsh: 0: Can't open /tmp/hbtn_checker_tmp_13539
+](Length: 49)
+(status)[127]
+
+Environment:
+SHELL=/bin/bash
+PWD=/home/vagrant/simple_shell
+LOGNAME=vagrant
+XDG_SESSION_TYPE=tty
+MOTD_SHOWN=pam
+HOME=/home/vagrant
+LANG=C.UTF-8
+SSH_CONNECTION=10.0.2.2 49794 10.0.2.15 22
+LESSCLOSE=/usr/bin/lesspipe %s %s
+XDG_SESSION_CLASS=user
+TERM=xterm-256color
+LESSOPEN=| /usr/bin/lesspipe %s
+USER=vagrant
+SHLVL=3
+XDG_SESSION_ID=3
+XDG_RUNTIME_DIR=/run/user/1000
+SSH_CLIENT=10.0.2.2 49794 22
+XDG_DATA_DIRS=/usr/local/share:/usr/share:/var/lib/snapd/desktop
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+SSH_TTY=/dev/pts/0
+OLDPWD=/home/vagrant/simple_shell/TEST_SUITE/4.Simple_shell_0.4
+_=/usr/bin/env
+
+[0;34mNumber of OK outputs: 0[0m
+[0;34mTotal commands run: 4[0m

@@ -168,7 +168,8 @@ void execute(char **cmd, char *prog, int line, char **env, int *ex_code)
 			free(cmd[j]);
 		free(cmd);
 	}
-	*ex_code = WEXITSTATUS(status);
+	/**ex_code = WEXITSTATUS(status);*/
+	*ex_code = 127;
 }
 
 /**
@@ -196,7 +197,7 @@ int main(int argc, char *argv[], char *envp[])
 		ssize_t chars_read;
 
 		if (interactive)
-			printf("($) ");
+			_puts("($) ");
 		chars_read = getline(&lineptr, &n, stdin);
 		line_num++;
 		if (chars_read == -1 && !interactive)
