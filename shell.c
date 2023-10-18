@@ -142,9 +142,12 @@ void execute(char **cmd, char *prog, int line, char **env, int *ex_code)
 	{
 		wait(&status);
 		free(path);
-		for (j = 0; cmd[j] != NULL; j++)
-			free(cmd[j]);
-		free(cmd);
+		if (cmd != NULL)
+		{
+			for (j = 0; cmd[j] != NULL; j++)
+				free(cmd[j]);
+			free(cmd);
+		}
 	}
 	*ex_code = WEXITSTATUS(status);
 }
