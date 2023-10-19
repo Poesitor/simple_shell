@@ -15,6 +15,5 @@ void shell_exit(char **command, int ex_code)
 		free(command[i]);
 	free(command);
 
-	printf("exit code: %d\n", ex_code);
 	exit(ex_code);
 }
