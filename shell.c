@@ -9,9 +9,9 @@
  *
  * Return: void
  */
-void no_path(char *name, int num, char **cmd)
+void no_path(char *name, int num, char **cmd, int *ex_code)
 {
-	int count = 0, j = 0;
+	int count = 0;
 	int temp = num;
 	char *num_str;
 	char *command = cmd[0];
@@ -47,10 +47,7 @@ void no_path(char *name, int num, char **cmd)
 
 	free(num_str);
 
-	for (j = 0; cmd[j] != NULL; j++)
-		free(cmd[j]);
-	free(cmd);
-	_exit(127);
+	*ex_code = 127;
 }
 
 /**
@@ -97,6 +94,8 @@ void sighandler(int sig)
 {
 	(void)sig;
 	_puts("\n($) ");
+
+	signal(SIGINT, sighandler);
 }
 /**
  * execute - checks if a command exists and executes it
@@ -113,13 +112,16 @@ void execute(char **cmd, char *prog, int line, char **env, int *ex_code)
 {
 	char *path;
 	int status, j;
-	pid_t child_pid;
+	pid_t child_pid = 1;
 
 	if (access(cmd[0], X_OK) == 0)
 		path = _strdup(cmd[0]);
 	else
 		path = which(cmd[0]);
-	child_pid = fork();
+	if (path == NULL)
+		no_path(prog, line, cmd, ex_code);
+	else
+		child_pid = fork();
 	if (child_pid == -1)
 	{
 		perror("fork");
@@ -127,13 +129,9 @@ void execute(char **cmd, char *prog, int line, char **env, int *ex_code)
 	}
 	if (child_pid == 0)
 	{
-		if (path == NULL)
-			no_path(prog, line, cmd);
 		if (execve(path, cmd, env) == -1)
-		{
 			perror("execve");
-			_exit(EXIT_FAILURE);
-		}
+		*ex_code = EXIT_FAILURE;
 		for (j = 0; cmd[j] != NULL; j++)
 			free(cmd[j]);
 		free(cmd);
@@ -149,7 +147,6 @@ void execute(char **cmd, char *prog, int line, char **env, int *ex_code)
 			free(cmd);
 		}
 	}
-	*ex_code = WEXITSTATUS(status);
 }
 
 /**
@@ -169,6 +166,7 @@ int main(int argc, char *argv[], char *envp[])
 
 	(void) argc;
 	signal(SIGINT, sighandler);
+
 	while (1)
 	{
 		char **command, *lineptr = NULL;
@@ -191,7 +189,7 @@ int main(int argc, char *argv[], char *envp[])
 		word_count = count_words(lineptr, chars_read);
 		command = tokenize_input(lineptr, word_count);
 		free(lineptr);
-		check_builtins(command);
+		check_builtins(command, ex_code);
 
 		if (word_count <= 1)
 			continue;

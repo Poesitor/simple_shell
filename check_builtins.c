@@ -6,7 +6,7 @@
  * @cmd: an array of the commands entered by the user
  *
  */
-void check_builtins(char **cmd)
+void check_builtins(char **cmd, int ex_code)
 {
 	int i = 0;
 	built_in_command_t builtins[] = {
@@ -21,7 +21,7 @@ void check_builtins(char **cmd)
 	{
 		if (_strcmp(cmd[0], builtins[i].command) == 0)
 		{
-			builtins[i].function(cmd);
+			builtins[i].function(cmd, ex_code);
 			return;
 		}
 		i++;

@@ -34,11 +34,11 @@ typedef struct path_s
 typedef struct built_in_commands_s
 {
 	char *command;
-	void (*function)(char **);
+	void (*function)(char **, int);
 } built_in_command_t;
 
-void check_builtins(char **cmd);
-void shell_exit(char **command);
+void check_builtins(char **cmd, int);
+void shell_exit(char **command, int);
 void _puts(char *s);
 int _putchar(char c);
 char *_strcpy(char *dest, const char *src);

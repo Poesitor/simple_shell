@@ -6,7 +6,7 @@
  * @command: a pointer to an array of commands given by the user
  *
  */
-void shell_exit(char **command)
+void shell_exit(char **command, int ex_code)
 {
 	int i;
 
@@ -14,5 +14,6 @@ void shell_exit(char **command)
 		free(command[i]);
 	free(command);
 
-	exit(0);
+	printf("exit code: %d\n", ex_code);
+	exit(ex_code);
 }
