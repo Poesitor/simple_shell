@@ -169,7 +169,6 @@ int main(int argc, char *argv[], char *envp[])
 
 	(void) argc;
 	signal(SIGINT, sighandler);
-
 	while (1)
 	{
 		char **command, *lineptr = NULL;
@@ -192,12 +191,10 @@ int main(int argc, char *argv[], char *envp[])
 		word_count = count_words(lineptr, chars_read);
 		command = tokenize_input(lineptr, word_count);
 		free(lineptr);
+		check_builtins(command);
 
 		if (word_count <= 1)
-		{
-			free(lineptr);
 			continue;
-		}
 		execute(command, argv[0], line_num, envp, &ex_code);
 	}
 	exit(ex_code);

@@ -24,6 +24,21 @@ typedef struct path_s
 	struct path_s *next;
 } path_t;
 
+/**
+ * struct built_in_commands_s - struct for builtin
+ * command names and pointers to their functions
+ *
+ * @command: The name of the command
+ * @function: Pointer to function to call when name is inputted
+ */
+typedef struct built_in_commands_s
+{
+	char *command;
+	void (*function)(char **);
+} built_in_command_t;
+
+void check_builtins(char **cmd);
+void shell_exit(char **command);
 void _puts(char *s);
 int _putchar(char c);
 char *_strcpy(char *dest, const char *src);
