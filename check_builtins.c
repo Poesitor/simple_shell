@@ -4,6 +4,7 @@
  * check_builtins - checks if a command entered is a builtin
  *
  * @cmd: an array of the commands entered by the user
+ * @ex_code: a pointer to the exit code of the main program
  *
  */
 void check_builtins(char **cmd, int ex_code)

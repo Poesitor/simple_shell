@@ -4,6 +4,7 @@
  * shell_exit - function to exit the shell
  *
  * @command: a pointer to an array of commands given by the user
+ * @ex_code: a pointer to the exit code of the main program
  *
  */
 void shell_exit(char **command, int ex_code)

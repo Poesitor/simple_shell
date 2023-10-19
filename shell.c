@@ -6,6 +6,7 @@
  * @name: program name
  * @num: the line number the command was found
  * @cmd: The command intended to be run
+ * @ex_code: a pointer to the exit code of the main function
  *
  * Return: void
  */
