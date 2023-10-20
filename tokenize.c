@@ -34,6 +34,12 @@ char **tokenize_input(char *lineptr, int word_count)
 			perror("strdup fail");
 			exit(EXIT_FAILURE);
 		}
+		if (command[i][_strlen(command[i]) - 1] == ';')
+		{
+			command[i][_strlen(command[i]) - 1] = '\0';
+			i++;
+			break;
+		}
 		token = _strtok(NULL, " ");
 		i++;
 	}
