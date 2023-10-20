@@ -190,7 +190,8 @@ int main(int argc, char *argv[], char *envp[])
 		word_count = count_words(lineptr, chars_read);
 		command = tokenize_input(lineptr, word_count);
 		free(lineptr);
-		check_builtins(command, ex_code);
+		if (check_builtins(command, ex_code) == -1)
+			continue;
 
 		if (word_count <= 1)
 			continue;
