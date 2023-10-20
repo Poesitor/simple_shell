@@ -119,7 +119,7 @@ void execute(char **cmd, char *prog, int line, char **env, int *ex_code)
 		path = _strdup(cmd[0]);
 	else
 		path = which(cmd[0]);
-	if (access(path, X_OK) != 0)
+	if (path == NULL || access(path, X_OK) != 0)
 		no_path(prog, line, cmd, ex_code);
 	else
 		child_pid = fork();
