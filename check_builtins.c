@@ -13,7 +13,6 @@ int check_builtins(char **cmd, int ex_code)
 	int i = 0;
 	built_in_command_t builtins[] = {
 		{"exit", shell_exit},
-		{"env", printenv},
 		{NULL, NULL}
 	};
 
