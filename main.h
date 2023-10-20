@@ -43,7 +43,7 @@ int shell_exit(char **command, int);
 void _puts(char *s);
 int _putchar(char c);
 char *_strcpy(char *dest, const char *src);
-int printenv(void);
+int printenv(char **command, int ex_code);
 char **tokenize_input(char *lineptr, int word_count);
 int _strlen(const char *s);
 char *which(char *file);

@@ -36,3 +36,33 @@ int shell_exit(char **command, int ex_code)
 	}
 	return (ex_code);
 }
+
+/**
+ * printenv - prints the list of environment variables
+ *
+ * @command: a pointer to an array of commands given by the user
+ * @ex_code: a pointer to the exit code of the main program
+ *
+ * Return: 0 on success 1 if there are other arguments
+ */
+int printenv(char **command, int ex_code)
+{
+	int i, j;
+	char c;
+
+	(void)ex_code;
+	if (command[1] == NULL)
+	{
+		for (i = 0; environ[i]; i++)
+		{
+			for (j = 0; environ[i][j]; j++)
+			{
+				c = environ[i][j];
+				_putchar(c);
+			}
+			_putchar('\n');
+		}
+		return (0);
+	}
+	return (1);
+}
