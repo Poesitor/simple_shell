@@ -178,6 +178,8 @@ int main(int argc, char *argv[], char *envp[])
 		if (interactive)
 			_puts("($) ");
 		chars_read = getline(&lineptr, &n, stdin);
+		if (lineptr == NULL)
+			continue;
 		line_num++;
 		if (chars_read == -1)
 		{
